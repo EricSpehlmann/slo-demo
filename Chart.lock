@@ -1,0 +1,6 @@
+dependencies:
+- name: slo
+  repository: https://autonomic.jfrog.io/autonomic/helm
+  version: 1.0.3
+digest: sha256:9abc559897705d70d91bf7d74094f91a5d0f58d14ebbf9267e2d9515c83c4a2d
+generated: "2022-04-22T14:32:07.4572-07:00"

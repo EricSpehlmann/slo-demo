@@ -1,0 +1,5 @@
+dependencies:
+  - name: slo
+    version: "*"
+    repository: "@au"
+    alias: slo-demo

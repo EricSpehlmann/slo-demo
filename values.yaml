@@ -1,0 +1,22 @@
+global:
+  team: observability
+  disablePages: true 
+# FOr documentation https://github.com/autonomic-ai/slo-helm-chart
+slo-demo:
+  granularity: business_service
+  business_service: test
+  slos:
+    demo-chat-duration:
+      objective: 99.9
+      # sli config can be found at https://grafana.au-infrastructure.com/d/FNIsZTH7z/sli-explorer?var-env=prod&var-granularity=business_service&var-trace_origin_service=chat-command-api&var-trace_origin_operation=webflux_POST_%2Fv1beta%2Fcommand%2Fvehicles%2F*%2Fcommands&from=now-1h&to=now&var-path=%2Fchat&orgId=1&var-to=cmd-mgmt&viewPanel=10
+      sli:
+        plugin:
+          id: "autonomic/sli/duration"
+          options:
+            granularity: business_service
+            trace_origin_service: chat-command-api
+            trace_origin_operation: 
+              - webflux_POST_/v1beta/command/vehicles/*/commands
+            path: /chat
+            to: cmd-mgmt
+            le_ms: "256" 

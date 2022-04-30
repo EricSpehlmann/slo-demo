@@ -40,13 +40,17 @@ kubectl get prometheusrule | grep slo-demo
 ```
 Sloth controller https://sloth.dev/examples/kubernetes/getting-started/ will have converted the PSL into a PrometheusRules CRD
 
-This Prometheus Rules CRD gets converted by `prometheus-rules-controller` side car running on prometheus pod, into a prometheus recording rule in the `etc/config/controller-rules` directory. Prometheus will reload its config and update recording rules.
+This Prometheus Rules CRD gets converted by `prometheus-rules-controller` side car running on prometheus pod, into a prometheus recording rule in the `/etc/config/controller-rules` directory. Prometheus will reload its config and update recording rules.
+
+```bash
+kubectl exec -it prometheus-ha-server-0 -c prometheus-config-server -- /bin/sh
+```
 
 
 ## prometheus-server for recording rule
 
 ```
-kubectl port-forward <prometheus-server-#######-#####> 9090
+kubectl port-forward prometheus-ha-server-0 9090:9090 9090
 
 ```
 browse to http://localhost:9090/rules and your recording rule should be defined. 
